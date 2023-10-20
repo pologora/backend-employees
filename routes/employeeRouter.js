@@ -1,8 +1,8 @@
-// import express from 'express';
-// import { getAllEmployees } from '../constrollers/employeeController.js';
+import express from 'express';
+import { getAllEmployees } from '../constrollers/employeeController.js';
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.route('/').get(getAllEmployees);
+router.route('/').get(getAllEmployees);
 
-// export default router;
+export default router;

@@ -5,15 +5,16 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/employees', (req, res, next) => {
-  res.status(200).json({
-    message: 'employees',
-  });
-});
 // app.use('/employees', employeeRouter);
-app.use('/', (req, res, next) => {
+app.get('/', (req, res, next) => {
   res.status(200).json({
     message: 'home',
+  });
+});
+
+app.get('/employees', (req, res, next) => {
+  res.status(200).json({
+    message: 'employees',
   });
 });
 
