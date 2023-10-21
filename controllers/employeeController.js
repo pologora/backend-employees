@@ -1,6 +1,22 @@
-export function getAllEmployees(req, res, next) {
+import { client } from '../mongoDb/connectToDb.js';
+
+const employeeCollection = client.db('magazyn').collection('Employee');
+
+export async function getAllEmployees(req, res, next) {
+  const { query } = req;
+
+  if (query.isSnti) {
+    query.isSnti = query.isSnti === 'true';
+  }
+
+  console.log(query);
+
+  const result = employeeCollection.find(query);
+  const data = await result.toArray();
+
   res.status(200).json({
     status: 'success',
-    data: 'all employees',
+    length: data.length,
+    data: data,
   });
 }
