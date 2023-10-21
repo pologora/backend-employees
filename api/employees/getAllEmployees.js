@@ -1,8 +1,8 @@
-import { client } from '../mongoDb/connectToDb.js';
+import { client } from '../../mongoDb/connectToDb.js';
 
 const employeeCollection = client.db('magazyn').collection('Employee');
 
-export async function getAllEmployees(req, res, next) {
+async function getAllEmployees(req, res, next) {
   const { query } = req;
 
   if (query.isSnti) {
@@ -20,3 +20,5 @@ export async function getAllEmployees(req, res, next) {
     data: data,
   });
 }
+
+export default getAllEmployees;
